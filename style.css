@@ -1,0 +1,180 @@
+/* Global Styles */
+* {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container Styles */
+.container {
+  height: 100vh;
+  width: 100%;
+  background-image: url(images/background.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Added for absolute positioning of ::before */
+}
+
+.container::before {
+  content: '';
+  position: absolute; /* Position it absolutely within the container */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust the RGBA values for color and opacity */
+  z-index: 1; /* Ensure the overlay is above the background but below content */
+}
+
+/* Ensure content is above the overlay */
+.container > * {
+  position: relative; /* Position content above the overlay */
+  z-index: 2; /* Higher z-index to ensure content is above the overlay */
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2);
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.397);
+}
+
+.content {
+  margin: 8% 0 0 5%;
+}
+
+.content h1 {
+  font-size: 35px;
+  color: rgb(221, 130, 45);
+}
+
+.content span {
+  font-size: 75px;
+}
+
+.content p {
+  padding: 20px 20px 20px 0;
+  margin-bottom: 20px;
+}
+
+#coin-List {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(0, 0, 0)) no-repeat;
+}
+
+/* Coin Styles */
+.coin {
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 150px;
+  text-align: center;
+  margin: 10px;
+  padding: 10px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition for transform and shadow */
+}
+
+.coin img {
+  width: 40px;
+  height: 40px;
+}
+
+.coin:hover {
+  transform: translateY(-10px); /* Move the coin slightly upwards */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Add a shadow for depth */
+  background-color: rgba(251, 255, 192, 0.397);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+      height: auto; /* Allow height to be dynamic on smaller screens */
+  }
+
+  .content {
+      margin: 5% 0 0 5%; /* Adjust margin for smaller screens */
+      text-align: center; /* Center text on smaller screens */
+  }
+
+  #coin-List {
+      flex-direction: column; /* Stack coins vertically on smaller screens */
+      align-items: center; /* Center coins */
+  }
+
+  .coin {
+      width: 90%; /* Make coins take full width on smaller screens */
+      margin: 10px 0; /* Adjust margin for coins */
+  }
+
+  nav {
+      flex-direction: column; /* Stack navigation items vertically */
+      align-items: flex-start; /* Align items to the start */
+  }
+
+  nav ul {
+      flex-direction: column; /* Stack navigation links */
+      margin-top: 10px; /* Add space between logo and links */
+  }
+
+  nav ul li {
+      margin-right: 0; /* Remove right margin for stacked items */
+      margin-bottom: 10px; /* Add bottom margin for spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .content h1 {
+      font-size: 28px; /* Reduce font size for smaller screens */
+  }
+
+  .content span {
+      font-size: 36px; /* Reduce font size for smaller screens */
+  }
+
+  .btn {
+      padding: 8px 16px; /* Adjust button padding */
+  }
+}
